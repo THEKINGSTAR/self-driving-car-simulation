@@ -1,3 +1,4 @@
+//initiate the Car Class
 class Car{
     constructor(x, y, width, height){
         this.x=x;
@@ -13,7 +14,9 @@ class Car{
         this.controls=new Controls();
     }
 
+    //Update the screen with the moving car object
     update(){
+        //set controls for forward and backward
         if(this.controls.forward){
             this.speed+=this.acceleration;
         }
@@ -21,18 +24,29 @@ class Car{
             this.speed-=this.acceleration;
         }
 
+        //Set the speed && the speed limits of the car
         if(this.speed> this.maxSpeed){
             this.speed=this.maxSpeed;
         }
         if(this.speed<-this.maxSpeed/2){
             this.speed=-this.maxSpeed/3;
         }
-
         if(this.speed>0){
             this.speed-=this.friction;
         }
         if(this.speed<0){
             this.speed+=this.friction;
+        }
+        if(Math.abs(this.speed)<this.friction){
+            this.speed=0;
+        }
+
+        //Set the controls for left and right
+        if(this.controls.right){
+            this.x+=2;
+        }
+        if(this.controls.left){
+            this.x-=2;
         }
 
     
