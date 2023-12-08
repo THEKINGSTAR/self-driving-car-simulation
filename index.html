@@ -29,7 +29,7 @@
         }
 
         h1 {
-            color: #007BFF;
+            color: darkblue;
         }
 
         p {
@@ -41,6 +41,24 @@
             padding: 10px;
             text-align: center;
             color: #fff;
+        }
+        img {
+            max-width: 95%;
+            height: auto;
+            max-width: 95%;
+            max-height: 90;
+            align-self: auto;
+        }
+        .parent {
+        display: flex;
+        flex-flow: row;
+        }
+        .child {
+        background: #ddd;
+        }
+        .child img {
+        width: 100%;
+        height: 100%;
         }
     </style>
 </head>
@@ -75,12 +93,12 @@
     <!-- Intro Section -->
     <section id="intro">
         <header>
-            <img src="" alt="Self-Driving Car Simulation">
-            <h1>Self-Driving Car Simulation</h1>
             <p>Building the Future of Autonomous Vehicles</p>
+            <img src="assets/pictures/neural_networ_self_drivin_car.jpg" alt="Self-Driving Car Simulation">
+            <h1>Self-Driving Car Simulation</h1>
             <nav>
-                <ul>
-                    <li><a href="#features">Features</a></li>
+                <ul align="left">
+                    <li><a href="#features">Features </a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
             </nav>
@@ -94,21 +112,32 @@
 
         <!-- Feature 1 -->
         <div class="feature">
-            <img src="assets/pictures/car_case-study.jpg" alt="Feature 1">
+            <div align="center">
+                <img src="assets/pictures/car_case-study.jpg" alt="Realistic">
+            </div>
             <h3>Realistic Simulation Environment</h3>
             <p>Experience a simulation environment that closely mirrors real-world driving scenarios, providing a foundation for diverse driving conditions.</p>
         </div>
 
         <!-- Feature 2 -->
         <div class="feature">
-            <img src="assets/pictures/Typical scenario of overtaking.jpg" alt="Feature 2">
+            <div align="center">
+                <img src="assets/pictures/Typical scenario of overtaking.jpg" alt="Simulation">
+            </div>
             <h3>Neural Network Integration</h3>
             <p>Witness the integration of a lightweight JavaScript neural network library, enabling the car to make informed driving decisions based on simulated sensor data.</p>
         </div>
 
         <!-- Feature 3 -->
         <div class="feature">
-            <img src="feature3-image.jpg" alt="Feature 3">
+            <div align="center" class="parent">
+                <div class="child">
+                    <img src="assets/pictures/neural_network.jpg" alt="Neural networks Implementation">
+                </div>
+                <div class="child">
+                    <img src="/assets/pictures/rotation physics.jpg" alt="Physics Implementation">
+                </div>
+            </div>
             <h3>User-Friendly Interface</h3>
             <p>Explore a user interface designed for easy monitoring of the simulation. Adjust neural network parameters and observe the car's behavior in real-time.</p>
         </div>
