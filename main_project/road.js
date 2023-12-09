@@ -13,6 +13,13 @@ class Road{
         this.bottom=infinity;
     }
 
+    //function to get the center of lane
+    getLaneCenter(laneIndex){
+        const laneWidth = this.width / this.laneCount;
+        return (this.left+laneWidth / 2 + 
+        Math.min(laneIndex , this.laneCount -1) * laneWidth);
+    }
+
     //DRAW THE ROAD AND THE LANE
     draw(ctx){
         ctx.lineWidth=5;
@@ -24,6 +31,12 @@ class Road{
                 this.right,
                 i/this.laneCount
             );
+            //Add dashes to the middle line
+            if(i>0 && i<this.laneCount){
+                ctx.setLineDash([20,20]);
+            }else{
+                ctx.setLineDash([]);
+            }
             //SET THE START OF THE LANE AND ITS EXTENDED
             ctx.beginPath();
             ctx.moveTo(x, this.top);
