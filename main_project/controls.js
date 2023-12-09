@@ -25,8 +25,8 @@ class Controls{
                     this.reverse=true;
                     break;
             }
-            //Check for event caching the keys
-            console.table(this);
+            //Check for event it catching the keys
+            //console.table(this);
         }
         document.onkeyup=(event)=>{
             switch(event.key)
@@ -44,8 +44,8 @@ class Controls{
                     this.reverse=false;
                     break;
             }
-            //Check for event caching the keys
-            console.table(this);
+            //Check for event if it catching the keys
+            //console.table(this);
         }
 
     };

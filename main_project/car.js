@@ -9,7 +9,7 @@ class Car{
         //define the car speed and direction based on physics
         this.speed=0;
         this.acceleration=0.2;
-        this.maxSpeed=4;
+        this.maxSpeed=3;
         this.friction=0.05;
         this.angel=0;
 
@@ -43,27 +43,45 @@ class Car{
             this.speed=0;
         }
 
-        //Set the controls for left and right
-        //By modifying the car angel not just go to left or right side of the screen
-        if(this.controls.right){
-            this.angel-=0.03;
-        }
-        if(this.controls.left){
-            this.angel+=0.-3;
+
+        //SET THE DIRECTION OF THE WHEEL BASE ON THE DIRECTION OF THE CAR
+        if(this.speed!=0){
+            const flip = this.speed>0?1:-1;
+            /*
+            Set the controls for left and right
+            By modifying the car angel not just go to left or right side of the screen
+            */
+            if(this.controls.left){
+                this.angel+=0.03 * flip;
+            }
+            if(this.controls.right){
+                this.angel-=0.03 * flip;
+            }
         }
 
-    
-        this.y-=this.speed;
+        /*
+        MAKE THE CAR MOVE IN THE DIRECTION OF THE ROTATION BASE ON 
+        SIN OR COS OF THE ANGLE TO THE (ZERO, ZERO) AXIS
+        */
+        this.x-=Math.sin(this.angel) * this.speed;
+        this.y-=Math.cos(this.angel) * this.speed;
+
     }
-
+    //Draw the canvas and the car on it
     draw(ctx){
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(-this.angel);
+
         ctx.beginPath();
         ctx.rect(
-            this.x - this.width / 2,
-            this.y - this.height / 2,
+            -this.width / 2,
+            -this.height / 2,
             this.width,
             this.height
         );
         ctx.fill();
+
+        ctx.restore();
     }
 }
