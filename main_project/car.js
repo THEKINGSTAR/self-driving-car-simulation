@@ -1,3 +1,8 @@
+/* 
+car Class contain the car with its corresponding attributes
+for its functionality 
+*/
+
 //initiate the Car Class
 class Car{
     constructor(x, y, width, height){

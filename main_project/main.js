@@ -1,3 +1,10 @@
+/*
+Main 
+entry point for the program 
+call the car, road , sensors
+and
+other responsible for the functionality of the project
+ */
 const canvas=document.getElementById("myCanvas");
 canvas.width=200;
 
@@ -13,7 +20,11 @@ animate();
 function animate(){
     car.update();
     canvas.height=window.innerHeight;
+    ctx.save();
+    ctx.translate(0, -car.y + canvas.height * 0.7);
     road.draw(ctx);
     car.draw(ctx);
+
+    ctx.restore();
     requestAnimationFrame(animate);
 }

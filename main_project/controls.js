@@ -1,3 +1,7 @@
+/*
+Control Class
+responsible for the controls of the car throw the arrow keys
+*/
 class Controls{
     constructor(){
         this.forward=false;
