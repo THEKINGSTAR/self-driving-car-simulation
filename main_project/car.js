@@ -18,7 +18,12 @@ class Car{
 
     //Update the screen with the moving car object
     update(){
-        //set controls for forward and backward
+       this.#move();
+        }
+
+        //Move method conation the car move by keys logic
+        #move(){
+             //set controls for forward and backward
         if(this.controls.forward){
             this.speed+=this.acceleration;
         }
@@ -58,7 +63,6 @@ class Car{
                 this.angel-=0.03 * flip;
             }
         }
-
         /*
         MAKE THE CAR MOVE IN THE DIRECTION OF THE ROTATION BASE ON 
         SIN OR COS OF THE ANGLE TO THE (ZERO, ZERO) AXIS
