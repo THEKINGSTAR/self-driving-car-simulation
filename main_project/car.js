@@ -25,11 +25,14 @@ class Car{
 
     //Update the screen with the moving car object
     update(roadBorders){
-       this.#move();
-       this.polygon = this.#carPolygon();
-       this.damaged = this.#assessDamage(roadBorders);
-       this.sensor.update(roadBorders);
+        if(!this.damaged){
+        this.#move();
+        this.polygon = this.#carPolygon();
+        this.damaged = this.#assessDamage(roadBorders);
         }
+        
+        this.sensor.update(roadBorders);
+    }
     
     //To get the car corner points and to asses if there is collagend
     //with the road and based on that if the car is damaged
