@@ -3,7 +3,7 @@ Road class
 responsible of creating the road and boarder of it for the car and the sensors
 */
 class Road{
-    constructor(x, width, laneCount = 3){
+    constructor(x, width, laneCount = 4){
         this.x = x;
         this.width = width;
         this.laneCount = laneCount;
@@ -46,7 +46,7 @@ class Road{
                 this.right,
                 i / this.laneCount
             );
-            
+
             //Add dashes to the middle line
             ctx.setLineDash([20,20]);
 
