@@ -23,9 +23,9 @@ class Car{
     }
 
     //Update the screen with the moving car object
-    update(){
+    update(roadBorders){
        this.#move();
-       this.sensor.update();
+       this.sensor.update(roadBorders);
         }
 
         //Move method conation the car move by keys logic
@@ -91,8 +91,8 @@ class Car{
             this.width,
             this.height
         );
-        ctx.fill();
 
+        ctx.fill();
         ctx.restore();
         this.sensor.draw(ctx);
     }
