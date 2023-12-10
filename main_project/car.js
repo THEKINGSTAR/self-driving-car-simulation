@@ -18,12 +18,14 @@ class Car{
         this.friction=0.05;
         this.angel=0;
 
-        this.controls=new Controls();
+        this.sensor = new Sensors(this);
+        this.controls = new Controls();
     }
 
     //Update the screen with the moving car object
     update(){
        this.#move();
+       this.sensor.update();
         }
 
         //Move method conation the car move by keys logic
@@ -92,5 +94,6 @@ class Car{
         ctx.fill();
 
         ctx.restore();
+        this.sensor.draw(ctx);
     }
 }
