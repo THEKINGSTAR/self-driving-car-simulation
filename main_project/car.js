@@ -5,7 +5,7 @@ for its functionality
 
 //initiate the Car Class
 class Car{
-    constructor(x, y, width, height){
+    constructor(x, y, width, height, controlType, maxSpeed = 3){
         //define the car parameters
         this.x = x;
         this.y = y;
@@ -14,38 +14,48 @@ class Car{
         //define the car speed and direction based on physics
         this.speed = 0;
         this.acceleration = 0.2;
-        this.maxSpeed = 3;
+        this.maxSpeed = maxSpeed;
         this.friction = 0.05;
         this.angle = 0;
         this.damaged = false;
 
-        this.sensor = new Sensors(this);
-        this.controls = new Controls();
+        //MAKE THE SENSORS WORK ONLY FOR OUR CAR
+        if(controlType != "DUMMY"){
+            this.sensor = new Sensors(this);
+        }
+        this.controls = new Controls(controlType);
     }
 
-    //Update the screen with the moving car object
-    update(roadBorders){
+    //Update the screen with the moving cars objects
+    update(roadBorders, traffic){
         if(!this.damaged){
         this.#move();
-        this.polygon = this.#carPolygon();
-        this.damaged = this.#assessDamage(roadBorders);
+        this.polygon = this.#createPolygon();
+        this.damaged = this.#assessDamage(roadBorders, traffic);
         }
-        
-        this.sensor.update(roadBorders);
+        if(this.sensor){
+            this.sensor.update(roadBorders, traffic);
+        }
     }
     
-    //To get the car corner points and to asses if there is collagend
+    //To get the car corner points and to asses if there is collision
     //with the road and based on that if the car is damaged
-    #assessDamage(roadBorders){
+    #assessDamage(roadBorders, traffic){
         for (let i = 0; i < roadBorders.length; i++) {
             if (polysIntersect(this.polygon, roadBorders[i])) {
                 return true;                
             }
         }
+        for (let i = 0; i < traffic.length; i++) {
+            if (polysIntersect(this.polygon, traffic[i].polygon)) {
+                return true;                
+            }
+        }
+
         return false;
     }
         //Get the card corners From the center of the car
-        #carPolygon(){
+        #createPolygon(){
             const points = [];
             const rad = Math.hypot(this.width , this.height) / 2;
             const alpha = Math.atan2(this.width, this.height);
@@ -84,8 +94,8 @@ class Car{
         if(this.speed > this.maxSpeed){
             this.speed = this.maxSpeed;
         }
-        if(this.speed <- this.maxSpeed/2){
-            this.speed =- this.maxSpeed/3;
+        if(this.speed <- this.maxSpeed / 2){
+            this.speed =- this.maxSpeed / 2;
         }
         if(this.speed > 0){
             this.speed -= this.friction;
@@ -121,12 +131,12 @@ class Car{
 
     }
     //Draw the canvas and the car on it
-    draw(ctx){
+    draw(ctx, color){
         //Change the car color if the car is damaged
         if(this.damaged){
             ctx.fillStyle = "gray";
         }else{
-            ctx.fillStyle = "red";
+            ctx.fillStyle = color;
         }
 
         ctx.beginPath();
@@ -137,7 +147,9 @@ class Car{
         }
         
         ctx.fill();
-        
-        this.sensor.draw(ctx);
+
+        if(this.sensor){
+            this.sensor.draw(ctx);
+        }
     }
 }

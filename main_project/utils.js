@@ -25,7 +25,7 @@ function getIntersection(A, B, C, D){
         const t = tTop / bottom;
         const u = uTop  / bottom;
 
-        if(t >= 0 && t <= 1 && u <= 1)
+        if(t >= 0 && t <= 1 && u >= 0 && u <= 1)
         {
             return {
                 x:lerp(A.x , B.x, t),

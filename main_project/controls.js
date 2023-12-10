@@ -3,14 +3,22 @@ Control Class
 responsible for the controls of the car throw the arrow keys
 */
 class Controls{
-    constructor(){
+    constructor(type){
         this.forward = false;
         this.left = false;
         this.right = false;
         this.reverse = false;
 
-        this.#addKeyboardListeners();
+        switch(type){
+            case "KEYS":
+                this.#addKeyboardListeners();
+                break;
+            case "DUMMY":
+                this.forward = true;
+                break;
+        }
     }
+    
     #addKeyboardListeners(){
         //Using The '=>' instead of 'function()' To refers to This of Controls Class
         document.onkeydown=(event)=>{
@@ -51,6 +59,6 @@ class Controls{
             //Check for event if it catching the keys
             //console.table(this);
         }
+    }
 
-    };
 }
