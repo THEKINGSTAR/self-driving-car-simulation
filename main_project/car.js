@@ -153,7 +153,7 @@ class Car{
 
     }
     //Draw the canvas and the car on it
-    draw(ctx, color){
+    draw(ctx, color, drawSensors=false){
         //Change the car color if the car is damaged
         if(this.damaged){
             ctx.fillStyle = "gray";
@@ -170,7 +170,7 @@ class Car{
         
         ctx.fill();
 
-        if(this.sensor){
+        if(this.sensor && drawSensors){
             this.sensor.draw(ctx);
         }
     }

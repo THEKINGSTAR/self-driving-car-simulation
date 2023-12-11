@@ -3,7 +3,7 @@ Road class
 responsible of creating the road and boarder of it for the car and the sensors
 */
 class Road{
-    constructor(x, width, laneCount = 3){
+    constructor(x, width, laneCount = 5){
         this.x = x;
         this.width = width;
         this.laneCount = laneCount;
