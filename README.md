@@ -10,7 +10,7 @@
 
 </div>
 
-## **``` ALX AFRICA - SOFTWARE ENGINEERING FINAL PROJECT ```**
+## **``` ALX AFRICA - SOFTWARE ENGINEERING Portfolio PROJECT ```**
 >- #### Self-driving Car Simulation, using a neural network implemented in JavaScript
 
 ## ```PROJECT LINK```
